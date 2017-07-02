@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Confusion Matrix</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+</head>
+<body>
+
+<h1>Hockey Positions Predictor - Confusion Matrix</h1>
+
+<button id="button1" onclick="button1()" style ="font-size: 18px;">Years(1917-2005) - All Features</button>
+<button id="button2" onclick="button2()" style ="font-size: 18px;">Years(1917-2005) - Less Features</button>
+<button id="button3" onclick="button3()" style ="font-size: 18px;">Years(1980-2005) - All Features</button>
+<button id="button4" onclick="button4()" style ="font-size: 18px;">Years(1980-2005) - Less Features</button>
+
+
+
+    <div id="dataView"></div>
+
+    <div style="display:inline-block; float:left" id="container"></div>
+    <div style="display:inline-block; float:left" id="legend"></div>
+
+
+	<script src="main.js"></script>
+
+	<script>
+
+	function button1() {
+		var confusionMatrix = [
+		[476, 152, 189, 172],
+		[67, 1171, 58, 70],
+		[215, 187, 380, 56],
+		[167, 122, 79, 460]
+	];
+	updated3(confusionMatrix);
+		var features = [{ "Top 10 Features" : "Goal/Assist Ratio"},
+					{ "Top 10 Features" : "Shooting Hand"},
+					{ "Top 10 Features" : "Goals per Games played"},
+					{ "Top 10 Features" : "Penalty Minutes"},
+					{ "Top 10 Features" : "Weight"},
+					{ "Top 10 Features" : "Goals"},
+					{ "Top 10 Features" : "Games Played"},
+								{ "Top 10 Features" : "Assists per Games Played"},
+								{ "Top 10 Features" : "Year of Birth"},
+								{ "Top 10 Features" : "Assists"} //,
+								// { "Features" : "First NHL Year"},
+								// { "Features" : "Points"},
+								// { "Features" : "Last NHL Year"},
+								// 			{ "Features" : "Shots on Goal"},
+								// 			{ "Features" : "Day of Birth"},
+								// 			{ "Features" : "Plus-Minus"},
+								// 			{ "Features" : "Height"},
+								// 			{ "Features" : "Month of Birth"},
+								// 						{ "Features" : "Game-Winning Goals"},
+								// 						{ "Features" : "Power Play Goals/Goals Ratio"},
+								// 						{ "Features" : "Power Play Assists/Assists Ratio"},
+								// 						{ "Features" : "Power Play Assists"},
+								// 						{ "Features" : "Power Play Goals"},
+								// 						{ "Features" : "Shorthanded Goals"},
+								// 						{ "Features" : "Shorthanded Goals/Goals Ratio"},
+								// 						{ "Features" : "Stint"},
+								// 						{ "Features" : "Country of Birth"},
+								// 						{ "Features" : "Game-Tying Goals"},
+								// 						{ "Features" : "Shorthanded Assists/Assists Ratio"},
+								// 						{ "Features" : "Shorthanded Assists"}
+		];
+		makeit(features);
+
+		console.log(features);
+	};
+
+	function button2(){
+		var confusionMatrix = [
+			[631, 196, 353, 279],
+			[88, 1680, 114, 116],
+			[303, 252, 679, 72],
+			[198, 173, 120, 755]
+		];
+	updated3(confusionMatrix);
+	var features = [{ "Top 10 Features" : "Goal/Assist Ratio"},
+				{ "Top 10 Features" : "Shooting Hand"},
+{ "Top 10 Features" : "Goals per Games played"},
+{ "Top 10 Features" : "Penalty Minutes"},
+{ "Top 10 Features" : "Weight"},
+					{ "Top 10 Features" : "Games Played"},
+				{ "Top 10 Features" : "Goals"},
+								{ "Top 10 Features" : "Assists per Games Played"},
+							{ "Top 10 Features" : "Assists"},
+							{ "Top 10 Features" : "Year of Birth"}//,
+							// { "Features" : "First NHL Year"},
+							// { "Features" : "Points"},
+							// 			{ "Features" : "Shots on Goal"},
+							// { "Features" : "Last NHL Year"},
+							// 			{ "Features" : "Plus-Minus"},
+							// 			{ "Features" : "Day of Birth"},
+							// 		{ "Features" : "Height"},
+							// 						{ "Features" : "Power Play Assists/Assists Ratio"},
+							// 						{ "Features" : "Power Play Goals/Goals Ratio"},
+							// 				{ "Features" : "Month of Birth"},
+							// 						{ "Features" : "Game-Winning Goals"},
+							// 						{ "Features" : "Shorthanded Goals"},
+							// 						{ "Features" : "Shorthanded Goals/Goals Ratio"}
+	];
+	makeit(features);
+};
+
+	function button3(){
+		var confusionMatrix = [
+			[438, 144, 167, 140],
+			[62, 1028, 52, 64],
+			[204, 149, 322, 53],
+			[186, 100, 67, 360]
+		];
+	 updated3(confusionMatrix);
+	 var features = [{ "Top 10 Features" : "Goal/Assist Ratio"},
+				 { "Top 10 Features" : "Goals per Games played"},
+				 { "Top 10 Features" : "Shooting Hand"},
+{ "Top 10 Features" : "Penalty Minutes"},
+{ "Top 10 Features" : "Weight"},
+				 { "Top 10 Features" : "Games Played"},
+										 { "Top 10 Features" : "Shots on Goal"},
+												 { "Top 10 Features" : "Plus-Minus"},
+							 { "Top 10 Features" : "Assists per Games Played"},
+				 { "Top 10 Features" : "Goals"} //,
+							// 			 { "Features" : "Day of Birth"},
+							//  { "Features" : "Year of Birth"},
+							//  { "Features" : "Assists"},
+							// 						 { "Features" : "Power Play Assists/Assists Ratio"},
+							// 			 { "Features" : "Height"},
+							// 			 { "Features" : "First NHL Year"},
+							// 			 { "Features" : "Points"},
+							// 			 { "Features" : "Last NHL Year"},
+							// 						 { "Features" : "Power Play Assists"},
+							// 			 { "Features" : "Month of Birth"},
+							// 						 { "Features" : "Power Play Goals/Goals Ratio"},
+							// 						 { "Features" : "Game-Winning Goals"},
+							// 						 { "Features" : "Country of Birth"},
+							// 						 { "Features" : "Power Play Goals"},
+							// 						 { "Features" : "Shorthanded Goals"},
+							// 						 { "Features" : "Shorthanded Assists/Assists Ratio"},
+							// 						 { "Features" : "Shorthanded Assists"},
+							// 						 { "Features" : "Shorthanded Goals/Goals Ratio"},
+							// 						 { "Features" : "Stint"},
+							// 						 { "Features" : "Game-Tying Goals"},
+	 ];
+	 makeit(features);
+ };
+
+	function button4(){
+		var confusionMatrix = [
+			[415, 151, 171, 152],
+			[57, 1038, 40, 71],
+			[202, 158, 318, 50],
+			[176, 110, 66, 361]
+		];
+	updated3(confusionMatrix);
+	var features = [{ "Top 10 Features" : "Goal/Assist Ratio"},
+				{ "Top 10 Features" : "Goals per Games played"},
+				{ "Top 10 Features" : "Shooting Hand"},
+{ "Top 10 Features" : "Penalty Minutes"},
+{ "Top 10 Features" : "Weight"},
+				{ "Top 10 Features" : "Goals"},
+				{ "Top 10 Features" : "Games Played"},
+										{ "Top 10 Features" : "Shots on Goal"},
+													{ "Top 10 Features" : "Power Play Assists/Assists Ratio"},
+							{ "Top 10 Features" : "Assists"} //,
+		// 					{ "Features" : "Plus-Minus"},
+		// { "Features" : "Assists per Games Played"},
+		// 													{ "Features" : "Power Play Assists"},
+		// 													{ "Features" : "Points"},
+		// 											{ "Features" : "Power Play Goals/Goals Ratio"},
+		// 								{ "Features" : "Height"},
+		// 											{ "Features" : "Year of Birth"},
+		// 												{ "Features" : "Day of Birth"},
+		// 								{ "Features" : "First NHL Year"},
+		// 											{ "Features" : "Game-Winning Goals"},
+		// 								{ "Features" : "Last NHL Year"},
+		// 								{ "Features" : "Month of Birth"},
+		// 											{ "Features" : "Shorthanded Goals"},
+		// 											{ "Features" : "Shorthanded Goals/Goals Ratio"}
+	];
+	makeit(features);;
+};
+
+function updated3(confusionMatrix){
+        var cc = confusionMatrix[0][0];
+        var cd = confusionMatrix[0][1];
+        var cl = confusionMatrix[0][2];
+        var cr = confusionMatrix[0][3];
+        var dc = confusionMatrix[1][0];
+        var dd = confusionMatrix[1][1];
+        var dl = confusionMatrix[1][2];
+        var dr = confusionMatrix[1][3];
+        var lc = confusionMatrix[2][0];
+        var ld = confusionMatrix[2][1];
+        var ll = confusionMatrix[2][2];
+        var lr = confusionMatrix[2][3];
+        var rc = confusionMatrix[3][0];
+        var rd = confusionMatrix[3][1];
+        var rl = confusionMatrix[3][2];
+        var rr = confusionMatrix[3][3];
+
+        var c = cc + cd + cl + cr;
+        var d = dc + dd + dl + dr;
+        var l = lc + ld + ll + lr;
+        var r = rc + rd + rl + rr;
+
+        var pc = cc + dc + lc + rc;
+        var pd = cd + dd + ld + rd;
+        var pl = cl + dl + ll + rl;
+        var pr = cr + dr + lr + rr;
+
+        var accuracy = (cc+dd+ll+rr)/(c+d+l+r);
+        var precision = ((cc/pc)+(dd/pd)+(ll/pl)+(rr/pr))/4;
+        var recall = ((cc/c)+(dd/d)+(ll/l)+(rr/r))/4;
+        var f1 = 2*(precision * recall)/(precision + recall);
+
+        accuracy = Math.round(accuracy * 100) / 100
+        f1 = Math.round(f1 * 100) / 100
+        precision = Math.round(precision * 100) / 100
+        recall = Math.round(recall * 100) / 100
+
+				var cScore = cc /(c+d+l+r)
+				var dScore = dd /(c+d+l+r)
+				var lScore = ll /(c+d+l+r)
+				var rScore = rr /(c+d+l+r)
+
+				cScore = Math.round(cScore * 100) / 100
+				dScore = Math.round(dScore * 100) / 100
+				lScore = Math.round(lScore * 100) / 100
+				rScore = Math.round(rScore * 100) / 100
+
+        var computedData = [];
+        computedData.push({"F1":f1, "PRECISION":precision,"RECALL":recall,"ACCURACY":accuracy});
+
+				var accuracyScore = [];
+				accuracyScore.push({"C Accuracy":cScore, "D Accuracy":dScore, "L Accuracy": lScore, "R Accuracy": rScore});
+
+        var labels = ['Center', 'Defensemen', 'Left Wing', 'Right Wing'];
+								Matrix({
+												container : '#container',
+												data      : confusionMatrix,
+												labels    : labels,
+												start_color : '#FFFFFF',
+						            end_color : '#483D8B'
+								});
+
+		// rendering the tables
+         var table = tabulate(computedData, ["ACCURACY", "PRECISION","RECALL","F1"]);
+
+         var table = tabulate(accuracyScore, ["C Accuracy", "D Accuracy","L Accuracy","R Accuracy"]);
+
+
+
+}
+
+function makeit(features){
+// rendering the LISTS
+
+		// var featparams = [];
+		// 	featparams.push({"Features": features})
+		// 	console.log(featparams);
+		var lists = listulate(features, ["Top 10 Features"]);
+};
+
+
+	</script>
+<div class="features"></div>
+</body>
