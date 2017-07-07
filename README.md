@@ -12,6 +12,7 @@ For an overview, please click [here](https://github.com/janniec/Hockey_Positions
   * Gaussian Naive Bayes  
   * Random Forest Classifier  
   * Confusion Matrix  
+  * D3.js  
     
 ## Data  
 Data was acquired from the Professional Hockey Database on  [Kaggle](https://www.kaggle.com/open-source-sports/professional-hockey-database "Professional Hockey Database"), specifically:  
