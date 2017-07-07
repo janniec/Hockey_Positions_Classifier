@@ -1,7 +1,18 @@
 # Hockey Position Classification   
 Using personal & scoring statistics, can I accurately classify players within the following 4 positions? Center, Defense-men, Right Wing, Left Wing.  
 For an overview, please click [here](https://github.com/janniec/Hockey_Positions_Classifier/blob/master/PredictingHockeyPositions.pdf "Presentation").
-
+  
+## Tools
+  * SQL  
+  * PostgreSQL  
+  * SKLearn  
+  * ROC Curve  
+  * GridSearch CV  
+  * Logistic Regression  
+  * Gaussian Naive Bayes  
+  * Random Forest Classifier  
+  * Confusion Matrix  
+    
 ## Data  
 Data was acquired from the Professional Hockey Database on  [Kaggle](https://www.kaggle.com/open-source-sports/professional-hockey-database "Professional Hockey Database"), specifically:  
 * Master.csv: This dataset contains biographical statistics on each hockey player.  
