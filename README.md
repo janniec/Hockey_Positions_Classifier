@@ -1,5 +1,5 @@
 # Hockey Position Classification   
-Using personal & scoring statistics, can I accurately classify players within the following 4 positions? Center, Defense-men, Right Wing, Left Wing.  
+Using demographic & scoring statistics, can I accurately classify players within the following 4 positions? Center, Defense-men, Right Wing, Left Wing.  
 For an overview, please click [here](https://github.com/janniec/Hockey_Positions_Classifier/blob/master/PredictingHockeyPositions.pdf "Presentation").
   
 ## Tools
